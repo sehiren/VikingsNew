@@ -117,8 +117,8 @@ NavMeshSettings:
 Transform:
   m_PrefabParentObject: {fileID: 4968037983094992, guid: d0b7c62d03ea1d4469d2185a24696da1,
     type: 2}
-  m_PrefabInternal: {fileID: 676487363}
---- !u!1001 &676487363
+  m_PrefabInternal: {fileID: 549844231}
+--- !u!1001 &549844231
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -157,19 +157,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4228078757529974, guid: d0b7c62d03ea1d4469d2185a24696da1, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -10.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4228078757529974, guid: d0b7c62d03ea1d4469d2185a24696da1, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -3.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4228078757529974, guid: d0b7c62d03ea1d4469d2185a24696da1, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 4.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 23433716402829644, guid: d0b7c62d03ea1d4469d2185a24696da1,
+    - target: {fileID: 23086097270805018, guid: d0b7c62d03ea1d4469d2185a24696da1,
         type: 2}
       propertyPath: m_Enabled
       value: 0

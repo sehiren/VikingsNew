@@ -6,16 +6,18 @@ public class MCAnimationsController : MonoBehaviour {
 
     Animator player_animator;
     GameObject player;
-    GameObject hipHorn;
-    GameObject handHorn;
+    GameObject backSword;
+    GameObject handSword;
+    bool armed;
 
 	// Use this for initialization
 	void Start ()
     {
         player_animator = gameObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        hipHorn = GameObject.FindGameObjectWithTag("hip_horn");
-        handHorn = GameObject.FindGameObjectWithTag("hand_horn");
+        backSword = GameObject.FindGameObjectWithTag("back_sword");
+        handSword = GameObject.FindGameObjectWithTag("hand_sword");
+        armed = false;
 
 	}
 	
@@ -33,10 +35,34 @@ public class MCAnimationsController : MonoBehaviour {
         {
             
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            player_animator.SetBool("Attack",true);
-            
+            if (!armed)
+            {
+                
+                player_animator.SetLayerWeight(1, 1.0f);
+                player_animator.SetBool("Attack", true);
+               
+               
+            }
+            else if (armed)
+            {
+               
+                player_animator.SetLayerWeight(2, 1.0f);
+                player_animator.SetBool("Unattack", true);
+               
+            }
+        }
+        if (player_animator.GetAnimatorTransitionInfo(1).IsName("Sword -> Base"))
+        {
+            Debug.Log("HOLI");
+            player_animator.SetLayerWeight(1, 0.0f);
+            player_animator.SetBool("Attack", false);
+        }
+        if (player_animator.GetAnimatorTransitionInfo(2).IsName("Sword -> Base"))
+        {
+            player_animator.SetLayerWeight(2, 0.0f);
+            player_animator.SetBool("Unattack", false);
         }
         else if (Input.anyKey == false)
         {
@@ -45,9 +71,17 @@ public class MCAnimationsController : MonoBehaviour {
     }
 
     void Sword() {
-        //player_animator.SetBool("Run", true);
-        hipHorn.GetComponent<MeshRenderer>().enabled= false;
-        handHorn.GetComponent<MeshRenderer>().enabled = true;
-
+        if (!armed)
+        {
+            Debug.Log("ahola");
+            armed = true;
+            backSword.GetComponent<MeshRenderer>().enabled = false;
+            handSword.GetComponent<MeshRenderer>().enabled = true;
+        }else if (armed)
+        {
+            armed = false;
+            backSword.GetComponent<MeshRenderer>().enabled = true;
+            handSword.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 }
