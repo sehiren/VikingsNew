@@ -25,16 +25,19 @@ public class MCAnimationsController : MonoBehaviour {
 	void Update ()
     {
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) )
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) )
         {
             player_animator.SetBool("Run", true);
+            player_animator.SetBool("Backwards", false);
 
         }
 
-        else if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.S))
         {
-            
+            player_animator.SetBool("Run", false);
+            player_animator.SetBool("Backwards", true);
         }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (!armed)
@@ -55,7 +58,6 @@ public class MCAnimationsController : MonoBehaviour {
         }
         if (player_animator.GetAnimatorTransitionInfo(1).IsName("Sword -> Base"))
         {
-            Debug.Log("HOLI");
             player_animator.SetLayerWeight(1, 0.0f);
             player_animator.SetBool("Attack", false);
         }
@@ -67,13 +69,13 @@ public class MCAnimationsController : MonoBehaviour {
         else if (Input.anyKey == false)
         {
             player_animator.SetBool("Run", false);
+            player_animator.SetBool("Backwards", false);
         }
     }
 
     void Sword() {
         if (!armed)
         {
-            Debug.Log("ahola");
             armed = true;
             backSword.GetComponent<MeshRenderer>().enabled = false;
             handSword.GetComponent<MeshRenderer>().enabled = true;

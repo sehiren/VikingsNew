@@ -22,9 +22,11 @@ public class MapGenerator : MonoBehaviour
     int[,] map;
 
     public Transform prefabEscalera;
+    GameObject player;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         GenerateMap();
     }
 
@@ -121,33 +123,58 @@ public class MapGenerator : MonoBehaviour
 
      void PonerEscalera(List<Room> survivingRooms)
     {
-        int xdefinitiva =0;
-        int ydefinitiva=0;
-        /*for (int x = 0; x < width/2; x++)//recorremos todo el mapa
+        bool suelo = false;
+        int x = 0;
+        int y=0;
+        while (suelo == false)
         {
-            for (int y = 0; y < height/2; y++)
+             int xdefinitiva = UnityEngine.Random.Range(-width / 2, width / 2);
+             int ydefinitiva = UnityEngine.Random.Range(-height / 2, height / 2);
+
+                    if (map[xdefinitiva + width / 2, ydefinitiva + height / 2] == 0)
+                    {
+                        suelo = true;
+                        x = xdefinitiva;
+                        y = ydefinitiva;
+                    }
+        }
+        
+        Instantiate(prefabEscalera, new Vector3(x, -4, y), Quaternion.identity);
+
+        suelo = false;
+        bool valido = true;
+        while (suelo == false)
+        {
+            valido = true; 
+            int xdefinitiva = UnityEngine.Random.Range(-width / 2, width / 2);
+            int ydefinitiva = UnityEngine.Random.Range(-height / 2, height / 2);
+
+            if (map[xdefinitiva + width / 2, ydefinitiva + height / 2] == 0)
             {
-                if (map[x, y] == 0)
+                for (int i = xdefinitiva - 1; i <= xdefinitiva + 1; i++)
                 {
-                    xdefinitiva = x;
-                    ydefinitiva = y;
+                    for (int j = ydefinitiva - 1; j <= ydefinitiva + 1; j++)
+                    {
+                        if (map[i + width / 2, j + height / 2] == 1)
+                        {
+                            valido = false;
+                            break;
+                        } 
+                    }
+                    if (valido == false) break; 
                 }
+                if (valido == true)
+                {
+                    suelo = true;
+                    x = xdefinitiva;
+                    y = ydefinitiva;
+                }
+
             }
         }
-        Instantiate(prefabEscalera, new Vector3(xdefinitiva, -4, ydefinitiva), Quaternion.identity);*/
 
-        bool suelo = false;
-        
-            xdefinitiva = UnityEngine.Random.Range(-width/2, width / 2);
-            ydefinitiva = UnityEngine.Random.Range(-height/2, height / 2);
-            Instantiate(prefabEscalera, new Vector3(xdefinitiva, -4, ydefinitiva), Quaternion.identity);
-           /* if (map[xdefinitiva, ydefinitiva] == 0)
-            {
-                suelo = true;
-                Instantiate(prefabEscalera, new Vector3(xdefinitiva, -4, ydefinitiva), Quaternion.identity);
-            } */
-        
-       
+        Vector3 pos = new Vector3(x, 0, y);
+        player.transform.position = pos;
 
     }
 

@@ -54,7 +54,8 @@ public class MCMovement : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= transform.forward * Time.deltaTime * speed;
+            
+            transform.position -= transform.forward * Time.deltaTime * speed * 0.5f;
         }
 
         if (Input.GetKey(KeyCode.A))
