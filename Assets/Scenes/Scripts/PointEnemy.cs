@@ -17,8 +17,8 @@ public class PointEnemy : MonoBehaviour {
     void Start ()
     {
         posicion = GetComponent<Transform>();
-        pointA = posicion.position;//esto vamos a suponer que se pone vien en el Instance 
-        pointB =new  Vector3(0, -3, -8);//este hay que canviarlo para que lo haga en el mapGenerator o que invoque a la función del map 
+        pointA = posicion.position;//esto vamos a suponer que se pone bien en el Instance 
+        pointB =new  Vector3(0, -3, -8);//este hay que cambiarlo para que lo haga en el mapGenerator o que invoque a la función del map (ya está puesto pero comentado)
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         nav.enabled = true;
       

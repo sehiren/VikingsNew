@@ -148,8 +148,9 @@ public class MapGenerator : MonoBehaviour
         Vector3 pos = GetRandomPos();
         player.transform.position = pos;
 
-       // GameObject enemy1 = Instantiate(prefabEnemyPoints, GetRandomPos(), Quaternion.identity);
-       // enemy1.set
+        //GameObject enemy1 = Instantiate(prefabEnemyPoints, GetRandomPos(), Quaternion.identity);
+       // PointEnemy instance = enemy1.GetComponent<PointEnemy>();
+        //instance.SetPointB(GetRandomPos());
         
         
 
