@@ -5,7 +5,11 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - prefabEscalera: {fileID: 4291503047929914, guid: d1dbfef3939eeff419327e656c22bae9,
+      type: 2}
+  - prefabEnemyPoints: {fileID: 1798728978828192, guid: c3cc473594f5cac4085f466da823a17a,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

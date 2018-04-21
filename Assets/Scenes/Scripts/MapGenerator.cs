@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor.AI;
+using UnityEditor;
 
 //hay algo que me calcula mal los colliders
 
@@ -22,12 +24,15 @@ public class MapGenerator : MonoBehaviour
     int[,] map;
 
     public Transform prefabEscalera;
+    public GameObject prefabEnemyPoints;
     GameObject player;
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         GenerateMap();
+        PonerEscalera();
     }
 
     void Update()
@@ -42,7 +47,6 @@ public class MapGenerator : MonoBehaviour
 
         }
     }
-
 
 
     void GenerateMap()
@@ -118,10 +122,10 @@ public class MapGenerator : MonoBehaviour
         survivingRooms[0].isAccessibleFromMainRoom = true;
 
         ConnectClosestRooms(survivingRooms);
-        PonerEscalera(survivingRooms);
+        
     }
 
-     void PonerEscalera(List<Room> survivingRooms)
+     void PonerEscalera()
     {
         bool suelo = false;
         int x = 0;
@@ -141,11 +145,25 @@ public class MapGenerator : MonoBehaviour
         
         Instantiate(prefabEscalera, new Vector3(x, -4, y), Quaternion.identity);
 
-        suelo = false;
+        Vector3 pos = GetRandomPos();
+        player.transform.position = pos;
+
+       // GameObject enemy1 = Instantiate(prefabEnemyPoints, GetRandomPos(), Quaternion.identity);
+       // enemy1.set
+        
+        
+
+    }
+
+    public Vector3 GetRandomPos()
+    {
+        int x = 0;
+        int y = 0;
+        bool suelo = false;
         bool valido = true;
         while (suelo == false)
         {
-            valido = true; 
+            valido = true;
             int xdefinitiva = UnityEngine.Random.Range(-width / 2, width / 2);
             int ydefinitiva = UnityEngine.Random.Range(-height / 2, height / 2);
 
@@ -159,9 +177,9 @@ public class MapGenerator : MonoBehaviour
                         {
                             valido = false;
                             break;
-                        } 
+                        }
                     }
-                    if (valido == false) break; 
+                    if (valido == false) break;
                 }
                 if (valido == true)
                 {
@@ -174,8 +192,7 @@ public class MapGenerator : MonoBehaviour
         }
 
         Vector3 pos = new Vector3(x, 0, y);
-        player.transform.position = pos;
-
+        return pos; 
     }
 
     void ConnectClosestRooms(List<Room> allRooms, bool forceAccessibilityFromMainRoom = false)
