@@ -32,7 +32,7 @@ public class MapGenerator : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         GenerateMap();
-        PonerEscalera();
+        
     }
 
     void Update()
@@ -43,7 +43,7 @@ public class MapGenerator : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("Floorgen"));
             ScriptEscaleras.entrar = false;
             GenerateMap();
-            Debug.Log("entra");
+     
 
         }
     }
@@ -81,6 +81,7 @@ public class MapGenerator : MonoBehaviour
 
         meshGen = GetComponent<MeshGenerator>();
         meshGen.GenerateMesh(borderedMap, 1);
+        PonerEscalera();
     }
 
     void ProcessMap()
@@ -127,6 +128,7 @@ public class MapGenerator : MonoBehaviour
 
      void PonerEscalera()
     {
+        Debug.Log("entra");
         bool suelo = false;
         int x = 0;
         int y=0;
