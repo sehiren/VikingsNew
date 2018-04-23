@@ -8,6 +8,9 @@ TagManager:
   - Floorgen
   - hand_horn
   - hip_horn
+  - back_sword
+  - hand_sword
+  - navmeshgen
   layers:
   - Default
   - TransparentFX

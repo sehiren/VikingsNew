@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEditor.AI;
 using UnityEditor;
+using UnityEngine.AI;
 
 //hay algo que me calcula mal los colliders
 
@@ -26,11 +27,15 @@ public class MapGenerator : MonoBehaviour
     public Transform prefabEscalera;
     public GameObject prefabEnemyPoints;
     GameObject player;
+    GameObject navGenerator;
+    LocalNavMeshBuilder navmeshbuild;
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        navGenerator = GameObject.FindGameObjectWithTag("navmeshgen");
+        navmeshbuild = navGenerator.GetComponent<LocalNavMeshBuilder>();
         GenerateMap();
         
     }
@@ -41,6 +46,7 @@ public class MapGenerator : MonoBehaviour
         {
             Destroy(meshGen.walls.GetComponent<MeshCollider>());//Por fin borra los colliders anteriores! Rejoyce!
             Destroy(GameObject.FindGameObjectWithTag("Floorgen"));
+            Destroy(GameObject.Find("Cube"));
             ScriptEscaleras.entrar = false;
             GenerateMap();
      
@@ -81,7 +87,10 @@ public class MapGenerator : MonoBehaviour
 
         meshGen = GetComponent<MeshGenerator>();
         meshGen.GenerateMesh(borderedMap, 1);
+
+        
         PonerEscalera();
+
     }
 
     void ProcessMap()
@@ -111,6 +120,12 @@ public class MapGenerator : MonoBehaviour
                 foreach (Coord tile in roomRegion)
                 {
                     map[tile.tileX, tile.tileY] = 1;
+
+                    /*GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    NavMeshObstacle navMeshObstacle = cube.AddComponent<NavMeshObstacle>();
+                    navMeshObstacle.size = new Vector3(0.5f, 0.5f, 0.5f);
+                    navMeshObstacle.transform.position = new Vector3(tile.tileX, -3, tile.tileY);
+                    navMeshObstacle.carving = false;*/
                 }
             }
             else
@@ -150,9 +165,9 @@ public class MapGenerator : MonoBehaviour
         Vector3 pos = GetRandomPos();
         player.transform.position = pos;
 
-        //GameObject enemy1 = Instantiate(prefabEnemyPoints, GetRandomPos(), Quaternion.identity);
-       // PointEnemy instance = enemy1.GetComponent<PointEnemy>();
-        //instance.SetPointB(GetRandomPos());
+        GameObject enemy1 = Instantiate(prefabEnemyPoints, GetRandomPos(), Quaternion.identity);
+        PointEnemy instance = enemy1.GetComponent<PointEnemy>();
+        instance.SetPointB(GetRandomPos());
         
         
 

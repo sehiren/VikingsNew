@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor.AI;
+using UnityEngine.AI;
 
 public class MeshGenerator : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MeshGenerator : MonoBehaviour
     List<int> triangles;
     List<List<int>> outlines = new List<List<int>>();
     HashSet<int> checkedVertices = new HashSet<int>();
+
 
     public MeshFilter getWalls()
     {
@@ -274,6 +276,14 @@ public class MeshGenerator : MonoBehaviour
                 wallTriangles.Add(startIndex + 3);
                 wallTriangles.Add(startIndex + 1);
                 wallTriangles.Add(startIndex + 0);
+
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                Transform cubet = cube.GetComponent<Transform>(); 
+                NavMeshObstacle navMeshObstacle = cube.AddComponent<NavMeshObstacle>();
+                navMeshObstacle.size = new Vector3(0.5f, 2f, 0.5f);
+                navMeshObstacle.transform.position = (vertices[outline[i]]);
+                navMeshObstacle.carving = true;
+
             }
         }
         wallMesh.vertices = wallVertices.ToArray();
@@ -281,9 +291,10 @@ public class MeshGenerator : MonoBehaviour
         walls.mesh = wallMesh;
 
         MeshCollider wallCollider = walls.gameObject.AddComponent<MeshCollider>();
-       // wallCollider.sharedMesh = wallMesh;
+        wallCollider.sharedMesh = wallMesh;
+       
 
-    }
+        }
     struct Triangle
     {
         public int vertexIndexA;

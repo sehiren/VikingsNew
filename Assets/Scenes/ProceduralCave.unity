@@ -365,7 +365,8 @@ MonoBehaviour:
   randomFillPercent: 49
   prefabEscalera: {fileID: 4291503047929914, guid: d1dbfef3939eeff419327e656c22bae9,
     type: 2}
-  prefabEnemyPoints: {fileID: 0}
+  prefabEnemyPoints: {fileID: 1798728978828192, guid: c3cc473594f5cac4085f466da823a17a,
+    type: 2}
 --- !u!4 &1038936629
 Transform:
   m_ObjectHideFlags: 0
@@ -487,7 +488,7 @@ GameObject:
   - component: {fileID: 1670795572}
   m_Layer: 0
   m_Name: NavMeshGenerator
-  m_TagString: Untagged
+  m_TagString: navmeshgen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
