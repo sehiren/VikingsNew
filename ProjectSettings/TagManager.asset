@@ -11,6 +11,9 @@ TagManager:
   - back_sword
   - hand_sword
   - navmeshgen
+  - Enemy
+  - Laser
+  - villager
   layers:
   - Default
   - TransparentFX
