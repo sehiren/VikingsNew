@@ -367,6 +367,8 @@ MonoBehaviour:
     type: 2}
   prefabEnemyPoints: {fileID: 1798728978828192, guid: c3cc473594f5cac4085f466da823a17a,
     type: 2}
+  prefabEnemySkeleton: {fileID: 1637563070997844, guid: bcc8d9cd926f5364bbecdd16992e5cf0,
+    type: 2}
 --- !u!4 &1038936629
 Transform:
   m_ObjectHideFlags: 0

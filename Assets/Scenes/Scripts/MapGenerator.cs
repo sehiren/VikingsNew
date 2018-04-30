@@ -26,6 +26,7 @@ public class MapGenerator : MonoBehaviour
 
     public Transform prefabEscalera;
     public GameObject prefabEnemyPoints;
+    public GameObject prefabEnemySkeleton;
     GameObject player;
     GameObject navGenerator;
     LocalNavMeshBuilder navmeshbuild;
@@ -168,6 +169,9 @@ public class MapGenerator : MonoBehaviour
         GameObject enemy1 = Instantiate(prefabEnemyPoints, GetRandomPos(), Quaternion.identity);
         PointEnemy instance = enemy1.GetComponent<PointEnemy>();
         instance.SetPointB(GetRandomPos());
+
+        GameObject enemy2 = Instantiate(prefabEnemySkeleton, GetRandomPos(), Quaternion.identity);
+        
         
         
 
