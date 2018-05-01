@@ -278,7 +278,9 @@ public class MeshGenerator : MonoBehaviour
                 wallTriangles.Add(startIndex + 0);
 
                 GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.tag = "Cube";
                 Transform cubet = cube.GetComponent<Transform>(); 
+                cube.GetComponent<MeshRenderer>().enabled = false;
                 NavMeshObstacle navMeshObstacle = cube.AddComponent<NavMeshObstacle>();
                 navMeshObstacle.size = new Vector3(0.5f, 2f, 0.5f);
                 navMeshObstacle.transform.position = (vertices[outline[i]]);

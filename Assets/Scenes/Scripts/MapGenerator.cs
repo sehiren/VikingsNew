@@ -47,7 +47,10 @@ public class MapGenerator : MonoBehaviour
         {
             Destroy(meshGen.walls.GetComponent<MeshCollider>());//Por fin borra los colliders anteriores! Rejoyce!
             Destroy(GameObject.FindGameObjectWithTag("Floorgen"));
-            Destroy(GameObject.Find("Cube"));
+            GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cube");
+            foreach (GameObject cube in cubes) {
+                Destroy(cube);
+            }
             ScriptEscaleras.entrar = false;
             GenerateMap();
      
