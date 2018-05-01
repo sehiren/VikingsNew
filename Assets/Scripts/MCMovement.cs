@@ -5,7 +5,7 @@ using UnityEngine;
 public class MCMovement : MonoBehaviour {
 
     // Use this for initialization
-    public float speed = 6f;
+    public float speed = 10.0f;
 
     Vector3 movement;
     Animator anim;
@@ -36,13 +36,25 @@ public class MCMovement : MonoBehaviour {
 
 
         Move();
-        Turning();
+        //Turning();
         Animating();
     }
 
     void Move()
+
     {
-        if (Input.GetKey(KeyCode.W))
+
+        if (Input.GetKey(KeyCode.S)) speed = 7.0f;
+        else speed = 10.0f;
+        var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
+
+
+
+        transform.Rotate(0, x, 0);
+        transform.Translate(0, 0, z);
+
+        /*if (Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * Time.deltaTime * speed;
         }
@@ -67,7 +79,7 @@ public class MCMovement : MonoBehaviour {
             playerRigidbody.AddForce(0, 90000, 0);
             StartCoroutine(Fall());
 
-        }
+        }*/
     }
 
     IEnumerator Fall()

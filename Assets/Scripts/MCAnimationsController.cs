@@ -25,7 +25,7 @@ public class MCAnimationsController : MonoBehaviour {
 	void Update ()
     {
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) )
+        if (Input.GetKey(KeyCode.W))
         {
             player_animator.SetBool("Run", true);
             player_animator.SetBool("Backwards", false);
@@ -55,6 +55,22 @@ public class MCAnimationsController : MonoBehaviour {
                 player_animator.SetBool("Unattack", true);
                
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (armed)
+            {
+                player_animator.SetLayerWeight(3, 1.0f);
+                player_animator.SetBool("Attacking", true);
+            }
+
+        }
+        if (player_animator.GetAnimatorTransitionInfo(3).IsName("Attack1 -> Base"))
+        {
+            player_animator.SetLayerWeight(3, 0.0f);
+            player_animator.SetBool("Attacking", false);
+
         }
         if (player_animator.GetAnimatorTransitionInfo(1).IsName("Sword -> Base"))
         {
