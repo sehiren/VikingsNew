@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MCMovement : MonoBehaviour {
 
@@ -13,13 +14,25 @@ public class MCMovement : MonoBehaviour {
     public static Quaternion newRotation;
     int floorMask;
     float camRayLength = 100f;
-    public Transform spawnPoint;
+    public Transform spawnCave;
 
     private void Start()
     {
-        spawnPoint = GameObject.Find("Spawn").transform;
-        this.transform.position = spawnPoint.position;
-        this.transform.rotation = spawnPoint.rotation;
+
+
+        if (CaveExit.exitCave)
+        {
+            Debug.Log("HA SALIDO DE LA CUEVA");
+           // this.GetComponent<NavMeshAgent>().enabled = false;
+           // this.transform.position = spawnCave.position;
+           // this.GetComponent<NavMeshAgent>().enabled = true;
+
+            this.GetComponent<NavMeshAgent>().Warp (spawnCave.position);
+
+            CaveExit.exitCave = false;
+           
+        }
+
     }
 
     private void Awake()

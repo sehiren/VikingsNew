@@ -27,6 +27,7 @@ public class MapGenerator : MonoBehaviour
     public Transform prefabEscalera;
     public GameObject prefabEnemyPoints;
     public GameObject prefabEnemySkeleton;
+    public GameObject prefabCaveExit;
     GameObject player;
     GameObject navGenerator;
     LocalNavMeshBuilder navmeshbuild;
@@ -174,6 +175,10 @@ public class MapGenerator : MonoBehaviour
         instance.SetPointB(GetRandomPos());
 
         GameObject enemy2 = Instantiate(prefabEnemySkeleton, GetRandomPos(), Quaternion.identity);
+
+        GameObject caveExit = Instantiate(prefabCaveExit, GetRandomPos(), Quaternion.identity);
+        Vector3 posicionescalera = GetRandomPos();
+        caveExit.transform.position = new Vector3(posicionescalera.x, -1.0f, posicionescalera.z);
         
         
         

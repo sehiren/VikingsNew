@@ -369,6 +369,8 @@ MonoBehaviour:
     type: 2}
   prefabEnemySkeleton: {fileID: 1637563070997844, guid: bcc8d9cd926f5364bbecdd16992e5cf0,
     type: 2}
+  prefabCaveExit: {fileID: 1143480679729544, guid: 9f63174ead745224c9ee453b57c35884,
+    type: 2}
 --- !u!4 &1038936629
 Transform:
   m_ObjectHideFlags: 0
