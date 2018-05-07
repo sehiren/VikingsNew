@@ -56,44 +56,47 @@ public class MCMovement : MonoBehaviour {
     void Move()
 
     {
-
-        if (Input.GetKey(KeyCode.S)) speed = 7.0f;
-        else speed = 10.0f;
-       /* var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-
-
-
-        transform.Translate(x, 0, 0);
-        transform.Translate(0, 0, z);
-
-        */
-        if (Input.GetKey(KeyCode.W))
+        if (!anim.GetBool("Attacking"))
         {
-            transform.position += transform.forward * Time.deltaTime * speed;
+            if (Input.GetKey(KeyCode.S)) speed = 7.0f;
+            else speed = 10.0f;
+            /* var z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+             var x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+
+
+
+             transform.Translate(x, 0, 0);
+             transform.Translate(0, 0, z);
+
+             */
+            if (Input.GetKey(KeyCode.W))
+            {
+
+                transform.position += transform.forward * Time.deltaTime * speed;
+            }
+
+            //if (Input.GetKey(KeyCode.D))
+            //{
+            //    transform.position += transform.right * Time.deltaTime * speed;
+            //}
+
+            if (Input.GetKey(KeyCode.S))
+            {
+
+                transform.position -= transform.forward * Time.deltaTime * speed * 0.5f;
+            }
+
+            //if (Input.GetKey(KeyCode.A))
+            //{
+            //    transform.position -= transform.right * Time.deltaTime * speed;
+            //}
+            /*if (Input.GetKey(KeyCode.Space))
+            {
+                playerRigidbody.AddForce(0, 90000, 0);
+                StartCoroutine(Fall());
+
+            }*/
         }
-
-       //if (Input.GetKey(KeyCode.D))
-       //{
-       //    transform.position += transform.right * Time.deltaTime * speed;
-       //}
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            
-            transform.position -= transform.forward * Time.deltaTime * speed * 0.5f;
-        }
-
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    transform.position -= transform.right * Time.deltaTime * speed;
-        //}
-        /*if (Input.GetKey(KeyCode.Space))
-        {
-            playerRigidbody.AddForce(0, 90000, 0);
-            StartCoroutine(Fall());
-
-        }*/
     }
 
     IEnumerator Fall()
