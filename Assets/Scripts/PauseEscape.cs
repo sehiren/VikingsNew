@@ -36,6 +36,7 @@ public class PauseEscape : MonoBehaviour {
     }
     public void MenuButton()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
 }
