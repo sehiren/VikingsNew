@@ -63,6 +63,7 @@ public class MCAnimationsController : MonoBehaviour {
             {
                 player_animator.SetLayerWeight(3, 1.0f);
                 player_animator.SetBool("Attacking", true);
+
                 handSword.GetComponentInChildren<Collider>().enabled = true;
                 
             }
