@@ -63,6 +63,8 @@ public class MCAnimationsController : MonoBehaviour {
             {
                 player_animator.SetLayerWeight(3, 1.0f);
                 player_animator.SetBool("Attacking", true);
+                handSword.GetComponentInChildren<Collider>().enabled = true;
+                
             }
 
         }
@@ -70,6 +72,8 @@ public class MCAnimationsController : MonoBehaviour {
         {
             player_animator.SetLayerWeight(3, 0.0f);
             player_animator.SetBool("Attacking", false);
+            handSword.GetComponentInChildren<Collider>().enabled = false;
+
 
         }
         if (player_animator.GetAnimatorTransitionInfo(1).IsName("Sword -> Base"))

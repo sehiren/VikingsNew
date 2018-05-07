@@ -8,9 +8,9 @@ public class SpiderAttack : MonoBehaviour
     public int attackDamage = 10;               
 
 
-    Animator anim;                              
+    Animator anim;
     GameObject player;                          
-    //PlayerHealth playerHealth;                  
+    PlayerHealth playerHealth;                  
     SpiderHealth enemyHealth;                    
     bool playerInRange;                         
     float timer;                                
@@ -20,7 +20,7 @@ public class SpiderAttack : MonoBehaviour
     {
         // Setting up the references.
         player = GameObject.FindGameObjectWithTag("Player");
-        //playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<SpiderHealth>();
         anim = GetComponent<Animator>();
     }
@@ -59,12 +59,6 @@ public class SpiderAttack : MonoBehaviour
             Attack();
         }
 
-        // If the player has zero or less health...
-       /* if (playerHealth.currentHealth <= 0)
-        {
-            // ... tell the animator the player is dead.
-            anim.SetTrigger("PlayerDead");
-        }*/
     }
 
 
@@ -74,11 +68,11 @@ public class SpiderAttack : MonoBehaviour
         timer = 0f;
       
         // If the player has health to lose...
-        /*if (playerHealth.currentHealth > 0)
+        if (playerHealth.currentHealth > 0)
         {
             // ... damage the player.
             playerHealth.TakeDamage(attackDamage);
-        }*/
+        }
     }
 }
 

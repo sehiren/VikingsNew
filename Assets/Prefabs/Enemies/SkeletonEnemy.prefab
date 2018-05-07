@@ -372,6 +372,8 @@ GameObject:
   - component: {fileID: 114783997868384292}
   - component: {fileID: 114288225264268262}
   - component: {fileID: 195830032020475074}
+  - component: {fileID: 114677477237783348}
+  - component: {fileID: 114131194051476648}
   m_Layer: 0
   m_Name: SkeletonEnemy
   m_TagString: Untagged
@@ -1008,6 +1010,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114131194051476648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637563070997844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4a3d5aee44f4d4ca2d529f92e5c63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 0.5
+  attackDamage: 10
 --- !u!114 &114288225264268262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1021,6 +1036,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   attackDamage: 10
+--- !u!114 &114677477237783348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637563070997844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c476e40fc2f64d142a1c037305e05fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 0
+  damageTaken: 0
 --- !u!114 &114783997868384292
 MonoBehaviour:
   m_ObjectHideFlags: 1
