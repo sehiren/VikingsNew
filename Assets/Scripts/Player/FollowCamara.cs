@@ -6,7 +6,7 @@ public class FollowCamara : MonoBehaviour {
 
     public float height = 1f;
     public float distance = 2f;
-    private float turnSpeed = 8f;
+    private float turnSpeed = 2f;
     private Vector3 offsetX;
     private Vector3 offsetY;
     public Transform player;

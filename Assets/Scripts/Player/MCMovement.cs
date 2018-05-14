@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class MCMovement : MonoBehaviour {
 
     // Use this for initialization
+  
     public float speed = 10.0f;
 
     Vector3 movement;
@@ -19,7 +20,7 @@ public class MCMovement : MonoBehaviour {
     private void Start()
     {
 
-
+        Cursor.visible = false;
         if (CaveExit.exitCave)
         {
             Debug.Log("HA SALIDO DE LA CUEVA");
@@ -117,7 +118,7 @@ public class MCMovement : MonoBehaviour {
             Vector3 playerToMouse = floorHit.point - transform.position;
             playerToMouse.y = 0f;
 
-            newRotation = Quaternion.LookRotation(playerToMouse);
+            newRotation = Quaternion.LookRotation(playerToMouse * 0.2f);
             playerRigidbody.MoveRotation(newRotation);
         }
     }
