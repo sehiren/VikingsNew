@@ -39,23 +39,28 @@ public class EnemyAttack : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        timer += Time.deltaTime;
 
+        
         if (playerInRange)
         {
+            timer += Time.deltaTime;
             Attack();
-            
+            if (timer >= 2f) {
+                anim.SetBool("isAttack", false);
+                timer = 0;
+            }
+
         }
         else
         {
             anim.SetBool("isAttack", false);
+            timer =0;
         }
 	}
 
     void Attack()
     {
-        timer = 0f;
-        anim.SetBool("isAttack", true);
+        if (timer>0.15)  anim.SetBool("isAttack", true);
 
         /*
          *     if(playerHealth.currentHealth > 0)
@@ -64,5 +69,6 @@ public class EnemyAttack : MonoBehaviour {
             playerHealth.TakeDamage (attackDamage);
         }
          */
+
     }
 }
