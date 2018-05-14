@@ -21,9 +21,7 @@ public class OnEnterPlayer : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player")
         {
-            if (Input.GetKeyDown("e")){
-                SceneManager.LoadScene(levelToLoad);
-            }
+            SceneManager.LoadScene(levelToLoad);
         }
     }
 
