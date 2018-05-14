@@ -165,7 +165,7 @@ public class MapGenerator : MonoBehaviour
                     }
         }
         
-        Instantiate(prefabEscalera, new Vector3(x, -4, y), Quaternion.identity);
+        Instantiate(prefabEscalera, new Vector3(x, -3, y), Quaternion.identity);
 
         Vector3 pos = GetRandomPos();
         player.transform.position = pos;
