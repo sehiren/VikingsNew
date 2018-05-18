@@ -9,6 +9,7 @@ public class EnemyAttack : MonoBehaviour {
 
     Animator anim;
     GameObject player;
+    PlayerHealth playerHealth;
     bool playerInRange;
     float timer;
 
@@ -16,7 +17,7 @@ public class EnemyAttack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-
+        playerHealth = player.GetComponent<PlayerHealth>();
         anim = GetComponent<Animator>();
 	}
 
@@ -47,6 +48,7 @@ public class EnemyAttack : MonoBehaviour {
             Attack();
             if (timer >= 2f) {
                 anim.SetBool("isAttack", false);
+                //this.GetComponentInChildren<Collider>().enabled = false;
                 timer = 0;
             }
 
@@ -54,21 +56,24 @@ public class EnemyAttack : MonoBehaviour {
         else
         {
             anim.SetBool("isAttack", false);
+            //this.GetComponentInChildren<Collider>().enabled = false;
             timer =0;
         }
 	}
 
     void Attack()
     {
-        if (timer>0.15)  anim.SetBool("isAttack", true);
+        if (timer > 0.15)
+        {
+            anim.SetBool("isAttack", true);
+           
+        }
 
-        /*
-         *     if(playerHealth.currentHealth > 0)
+        if (playerHealth.currentHealth > 0 )
         {
             // ... damage the player.
-            playerHealth.TakeDamage (attackDamage);
+            playerHealth.TakeDamage(attackDamage);
         }
-         */
 
     }
 }
