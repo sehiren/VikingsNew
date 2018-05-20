@@ -14,6 +14,8 @@ public class MapGenerator : MonoBehaviour
 
     public int width;
     public int height;
+    public int floor = 1;
+    public int floorObject;
     MeshGenerator meshGen;
 
     public string seed;
@@ -28,6 +30,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject prefabEnemyPoints;
     public GameObject prefabEnemySkeleton;
     public GameObject prefabCaveExit;
+    public GameObject prefabEscudo;
     GameObject player;
     GameObject navGenerator;
     LocalNavMeshBuilder navmeshbuild;
@@ -38,6 +41,7 @@ public class MapGenerator : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         navGenerator = GameObject.FindGameObjectWithTag("navmeshgen");
         navmeshbuild = navGenerator.GetComponent<LocalNavMeshBuilder>();
+        floorObject = UnityEngine.Random.Range(5, 21);
         GenerateMap();
         
     }
@@ -53,6 +57,7 @@ public class MapGenerator : MonoBehaviour
                 Destroy(cube);
             }
             ScriptEscaleras.entrar = false;
+            floor++;
             GenerateMap();
      
 
@@ -148,7 +153,6 @@ public class MapGenerator : MonoBehaviour
 
      void PonerEscalera()
     {
-        Debug.Log("entra");
         bool suelo = false;
         int x = 0;
         int y=0;
@@ -179,6 +183,16 @@ public class MapGenerator : MonoBehaviour
         GameObject caveExit = Instantiate(prefabCaveExit, GetRandomPos(), Quaternion.identity);
         Vector3 posicionescalera = GetRandomPos();
         caveExit.transform.position = new Vector3(posicionescalera.x, -1.0f, posicionescalera.z);
+
+        if (floor == floorObject)
+        {
+            GameObject escudo = Instantiate(prefabEscudo, GetRandomPos(), Quaternion.identity);
+            escudo.transform.position = new Vector3(0, -2, 0);
+
+        }
+
+        Debug.Log("estoy en el piso " + floor);
+        Debug.Log("el escudo está en el piso " + floorObject);
         
         
         

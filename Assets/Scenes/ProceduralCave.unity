@@ -360,6 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 128
   height: 72
+  floor: 0
+  floorObject: 0
   seed: Anna
   useRandomSeed: 1
   randomFillPercent: 49
@@ -371,6 +373,7 @@ MonoBehaviour:
     type: 2}
   prefabCaveExit: {fileID: 1143480679729544, guid: 9f63174ead745224c9ee453b57c35884,
     type: 2}
+  prefabEscudo: {fileID: 192740, guid: e849b6965096ee748bacfa92f3c374f2, type: 2}
 --- !u!4 &1038936629
 Transform:
   m_ObjectHideFlags: 0
@@ -639,7 +642,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1880307542}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 19.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -704,6 +707,31 @@ Prefab:
     - target: {fileID: 23982644104856140, guid: d0b7c62d03ea1d4469d2185a24696da1,
         type: 2}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224728427309215498, guid: d0b7c62d03ea1d4469d2185a24696da1,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224728427309215498, guid: d0b7c62d03ea1d4469d2185a24696da1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224577959292678866, guid: d0b7c62d03ea1d4469d2185a24696da1,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224577959292678866, guid: d0b7c62d03ea1d4469d2185a24696da1,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224577959292678866, guid: d0b7c62d03ea1d4469d2185a24696da1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
