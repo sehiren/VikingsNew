@@ -6,6 +6,7 @@ using UnityEngine;
 public class PauseEscape : MonoBehaviour {
 
     public Transform canvas;
+    public GameObject instructionImage;
 	// Update is called once per frame
 	void Update () {
 
@@ -22,6 +23,8 @@ public class PauseEscape : MonoBehaviour {
             canvas.gameObject.SetActive(true);
             Time.timeScale = 0;
             Camera.main.GetComponent<FollowCamara>().enabled = false;
+            Cursor.visible = true;
+            instructionImage.active = false;
         }
         else
         {
@@ -38,5 +41,11 @@ public class PauseEscape : MonoBehaviour {
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void InstructionsButton()
+    {
+        instructionImage.active = true;
+
     }
 }
