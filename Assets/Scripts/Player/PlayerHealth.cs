@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
@@ -9,8 +10,10 @@ public class PlayerHealth : MonoBehaviour {
     public int currentHealth;
     public Slider m_Slider;
     Animator anim;
-    bool isDead;
+    public static bool isDead;
     float damTimer;
+    
+
 	// Use this for initialization
 	void Start () {
         playerHealth = 100;
@@ -47,6 +50,9 @@ public class PlayerHealth : MonoBehaviour {
     }
     public void Death()
     {
+        isDead = true;
         anim.SetBool("Dead", true);
+        SceneManager.LoadScene("Main");
+        currentHealth = playerHealth;
     }
 }

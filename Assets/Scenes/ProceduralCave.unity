@@ -689,15 +689,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4968037983094992, guid: d0b7c62d03ea1d4469d2185a24696da1, type: 2}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 4968037983094992, guid: d0b7c62d03ea1d4469d2185a24696da1, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 4968037983094992, guid: d0b7c62d03ea1d4469d2185a24696da1, type: 2}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 23086097270805018, guid: d0b7c62d03ea1d4469d2185a24696da1,
         type: 2}

@@ -12,6 +12,7 @@ public class MCMovement : MonoBehaviour {
     Vector3 movement;
     Animator anim;
     Rigidbody playerRigidbody;
+
     public static Quaternion newRotation;
     int floorMask;
     float camRayLength = 100f;
@@ -21,18 +22,15 @@ public class MCMovement : MonoBehaviour {
     {
 
         Cursor.visible = false;
-        if (CaveExit.exitCave)
+        if (CaveExit.exitCave || PlayerHealth.isDead == true)
         {
             Debug.Log("HA SALIDO DE LA CUEVA");
-           // this.GetComponent<NavMeshAgent>().enabled = false;
-           // this.transform.position = spawnCave.position;
-           // this.GetComponent<NavMeshAgent>().enabled = true;
-
             this.GetComponent<NavMeshAgent>().Warp (spawnCave.position);
-
+            PlayerHealth.isDead = false; 
             CaveExit.exitCave = false;
            
         }
+
 
     }
 

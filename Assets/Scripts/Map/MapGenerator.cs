@@ -174,11 +174,15 @@ public class MapGenerator : MonoBehaviour
         Vector3 pos = GetRandomPos();
         player.transform.position = pos;
 
-        GameObject enemy1 = Instantiate(prefabEnemyPoints, GetRandomPos(), Quaternion.identity);
-        PointEnemy instance = enemy1.GetComponent<PointEnemy>();
-        instance.SetPointB(GetRandomPos());
+        for (int i = 0; i < Mathf.RoundToInt(floor/3 + 1); i++)
+        {
+            GameObject enemy1 = Instantiate(prefabEnemyPoints, GetRandomPos(), Quaternion.identity);
+            PointEnemy instance = enemy1.GetComponent<PointEnemy>();
+            instance.SetPointB(GetRandomPos());
 
-        GameObject enemy2 = Instantiate(prefabEnemySkeleton, GetRandomPos(), Quaternion.identity);
+            GameObject enemy2 = Instantiate(prefabEnemySkeleton, GetRandomPos(), Quaternion.identity);
+        }
+        
 
         GameObject caveExit = Instantiate(prefabCaveExit, GetRandomPos(), Quaternion.identity);
         Vector3 posicionescalera = GetRandomPos();
